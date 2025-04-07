@@ -12,7 +12,7 @@ type Config struct {
 
 func NewConfig() *Config {
 	return &Config{
-		Addr:             getEnv("ADDR", ":8080"),
+		Addr:             getEnv("ADDR", "8080"),
 		Uri:              getEnv("MONGO", ""),
 		DBname:           getEnv("DBNAME", "orders"),
 		OrdersCollection: getEnv("ORDERS_COLLECTION", "orders"),

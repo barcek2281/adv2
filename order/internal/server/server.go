@@ -28,7 +28,6 @@ func (s *Server) Start() error {
 }
 
 func (s *Server) Configure() {
-	// Пинг
 	s.mux.HandleFunc("/hello", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("hello, world"))
 	})

@@ -6,6 +6,7 @@ import (
 )
 
 func Error(w http.ResponseWriter, r *http.Request, statusCode int, err error) {
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(statusCode)
 	if err != nil {
 		json.NewEncoder(w).Encode(map[string]string{"error": err.Error()})
@@ -15,6 +16,7 @@ func Error(w http.ResponseWriter, r *http.Request, statusCode int, err error) {
 }
 
 func Response(w http.ResponseWriter, r *http.Request, statusCode int, data interface{}) {
+	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(statusCode)
 	json.NewEncoder(w).Encode(data)
 }

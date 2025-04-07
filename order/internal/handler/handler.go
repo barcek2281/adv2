@@ -50,7 +50,7 @@ func (h *HandlerOrders) Create() http.HandlerFunc {
 
 func (h *HandlerOrders) GetByID() http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		id := r.URL.Query().Get("id")
+		id := r.PathValue("id")
 		if id == "" {
 			log.Printf("no id")
 			utils.Error(w, r, http.StatusBadRequest, nil)
@@ -73,7 +73,7 @@ func (h *HandlerOrders) Update() http.HandlerFunc {
 		MSG string `json:"msg"`
 	}
 	return func(w http.ResponseWriter, r *http.Request) {
-		id := r.URL.Query().Get("id")
+		id := r.PathValue("id")
 		if id == "" {
 			log.Printf("no id")
 			utils.Error(w, r, http.StatusBadRequest, nil)
@@ -112,7 +112,7 @@ func (h *HandlerOrders) Delete() http.HandlerFunc {
 		MSG string `json:"msg"`
 	}
 	return func(w http.ResponseWriter, r *http.Request) {
-		id := r.URL.Query().Get("id")
+		id := r.PathValue("id")
 		if id == "" {
 			log.Printf("no id")
 			utils.Error(w, r, http.StatusBadRequest, nil)
