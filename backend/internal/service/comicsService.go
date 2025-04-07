@@ -25,7 +25,6 @@ func NewComicsService(config *config.Config) *ComicsService {
 }
 
 func (c *ComicsService) CreateComics(comics *models.ProductComics) error {
-
 	if err := c.store.ComicsRepo().Create(comics); err != nil {
 		return err
 	}

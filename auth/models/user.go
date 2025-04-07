@@ -8,8 +8,6 @@ import (
 	"golang.org/x/crypto/bcrypt"
 )
 
-var ()
-
 type User struct {
 	ID         primitive.ObjectID `bson:"_id,omitempty"`
 	Username   string             `bson:"username,omitempty"`
@@ -28,7 +26,6 @@ func (u *User) IsValid() bool {
 	}
 	username := regexp.MustCompile(`^[a-zA-Z0-9_]{3,16}$`)
 	return username.MatchString(u.Username)
-
 }
 
 func (u *User) CryptPassword() error {
@@ -43,6 +40,7 @@ func (u *User) CryptPassword() error {
 func (u *User) IsCorrectPassword(password string) bool {
 	return bcrypt.CompareHashAndPassword([]byte(u.Password), []byte(password)) == nil
 }
+
 func (u User) Role() string {
 	return "user"
 }

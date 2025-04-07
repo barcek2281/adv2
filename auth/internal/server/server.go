@@ -19,7 +19,6 @@ type Server struct {
 func NewServer(config *config.Config) *Server {
 	router := mux.NewRouter()
 	storage, err := store.NewMongoDB(config)
-
 	if err != nil {
 		log.Fatalf("cannot connect to db: %v", err)
 	}
@@ -31,7 +30,6 @@ func NewServer(config *config.Config) *Server {
 }
 
 func (s *Server) Run() error {
-
 	s.Configure()
 
 	return http.ListenAndServe(s.config.Addr, s.Router)

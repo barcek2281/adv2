@@ -78,8 +78,7 @@ func (c *ComicsRepository) Delete(id string) error {
 	if err != nil {
 		return err
 	}
-	_, err = c.Collection.DeleteOne(ctx, bson.M{"_id":newId})
-
+	_, err = c.Collection.DeleteOne(ctx, bson.M{"_id": newId})
 	if err != nil {
 		return err
 	}

@@ -26,7 +26,6 @@ func (a *Admin) IsValid() bool {
 	}
 	username := regexp.MustCompile(`^[a-zA-Z0-9_]{3,16}$`)
 	return username.MatchString(a.Username)
-
 }
 
 func (a *Admin) CryptPassword() error {
@@ -41,6 +40,7 @@ func (a *Admin) CryptPassword() error {
 func (a *Admin) IsCorrectPassword(password string) bool {
 	return bcrypt.CompareHashAndPassword([]byte(a.Password), []byte(password)) == nil
 }
+
 func (a Admin) Role() string {
 	return "admin"
 }

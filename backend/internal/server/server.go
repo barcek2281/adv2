@@ -9,15 +9,15 @@ import (
 )
 
 type Server struct {
-	config  *config.Config
-	mux     *http.ServeMux
+	config        *config.Config
+	mux           *http.ServeMux
 	handlerComics *handler.HandlerComics
 }
 
 func NewServer(config *config.Config) *Server {
 	return &Server{
-		config:  config,
-		mux:     http.NewServeMux(),
+		config:        config,
+		mux:           http.NewServeMux(),
 		handlerComics: handler.NewHandler(config),
 	}
 }
@@ -36,5 +36,4 @@ func (s *Server) Configure() {
 	s.mux.Handle("PATCH /product/comics/{id}", s.handlerComics.Update())
 	s.mux.Handle("DELETE /product/comics/{id}", s.handlerComics.Delete())
 	s.mux.Handle("GET /product/comics", s.handlerComics.GetAll())
-
 }

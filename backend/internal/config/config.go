@@ -7,16 +7,16 @@ type Config struct {
 	ComicsCollection string
 	DBname           string
 	Uri              string
-	JWTSecret string
+	JWTSecret        string
 }
 
 func NewConfig() *Config {
 	return &Config{
-		Addr: getEnv("ADDR", ":8080"),
-		Uri: getEnv("MONGO", ""),
-		DBname: getEnv("DBname", "product"),
+		Addr:             getEnv("ADDR", ":8080"),
+		Uri:              getEnv("MONGO", ""),
+		DBname:           getEnv("DBname", "product"),
 		ComicsCollection: getEnv("COMICS_COLLECTION", "comics"),
-		JWTSecret: getEnv("JWTSecret", "secret"),
+		JWTSecret:        getEnv("JWTSecret", "secret"),
 	}
 }
 

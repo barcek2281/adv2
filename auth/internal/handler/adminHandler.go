@@ -38,7 +38,6 @@ func (u *AdminHandler) Register() http.HandlerFunc {
 		Msg string `json:"msg"`
 	}
 	return func(w http.ResponseWriter, r *http.Request) {
-		
 		req := Request{}
 		if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
 			utils.Error(w, r, http.StatusBadRequest, err)

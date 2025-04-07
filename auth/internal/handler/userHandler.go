@@ -2,9 +2,9 @@ package handler
 
 import (
 	"encoding/json"
+	"log"
 	"net/http"
 	"time"
-	"log"
 
 	"github.com/barcek2281/adv2/auth/internal/config"
 	"github.com/barcek2281/adv2/auth/internal/service"
@@ -53,7 +53,7 @@ func (u *UserHandler) RegisterUser() http.HandlerFunc {
 		msg, cookie, err := u.userService.Register(&user)
 		if err != nil {
 
-			utils.Response(w, r, http.StatusInternalServerError, Response{Msg: "server error"})
+			utils.Error(w, r, http.StatusInternalServerError, err)
 
 			return
 		}

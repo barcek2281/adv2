@@ -28,10 +28,10 @@ func NewStore(config *config.Config) (*Store, error) {
 		return nil, err
 	}
 	db := client.Database(config.DBname)
-	
+
 	return &Store{
-		uri: config.Uri,
-		db: db,
+		uri:    config.Uri,
+		db:     db,
 		client: client,
 		config: config,
 	}, nil

@@ -1,6 +1,5 @@
 package config
 
-
 import "github.com/joho/godotenv"
 
 type Config struct {
@@ -26,7 +25,8 @@ func NewConfig() (*Config, error) {
 			Collection:      c["COLLECTION"],
 			SECRET:          c["SECRET"],
 			AdminCollection: c["ADMIN_COLLECTION"],
-			MailURI:         c["MAIL_URI"]},
+			MailURI:         c["MAIL_URI"],
+		},
 
 		nil
 }
