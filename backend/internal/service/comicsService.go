@@ -32,3 +32,7 @@ func (c *ComicsService) CreateComics(comics *models.ProductComics) error {
 
 	return nil
 }
+
+func (c *ComicsService) GetById(id string) (*models.ProductComics, error) {
+	return c.store.ComicsRepo().GetById(id)
+}

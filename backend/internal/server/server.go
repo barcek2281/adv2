@@ -32,4 +32,9 @@ func (s *Server) Configure() {
 		w.Write([]byte("hello, world"))
 	})
 	s.mux.Handle("POST /product/comics", s.handlerComics.Create())
+	s.mux.Handle("GET /product/comics/{id}", s.handlerComics.GetById())
+	// s.mux.Handle("PATCH /product/comics/{id}", nil)
+	// s.mux.Handle("DELETE /product/comics/{id}", nil)
+	// s.mux.Handle("GET /product/comics", nil)
+
 }
