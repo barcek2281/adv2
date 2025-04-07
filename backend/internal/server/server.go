@@ -17,10 +17,13 @@ func NewServer(config *config.Config) *Server {
 	return &Server{
 		config: config,
 		mux:    http.NewServeMux(),
+		handler: handler.NewHandler(config),
 	}
 }
 
 func (s *Server) Start() error {
+
+
 	return http.ListenAndServe(s.config.Addr, s.mux)
 }
 

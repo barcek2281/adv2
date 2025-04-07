@@ -3,15 +3,18 @@ package config
 import "os"
 
 type Config struct {
-	Addr string
+	Addr             string
 	ComicsCollection string
-	DBname string
-	Uri string
+	DBname           string
+	Uri              string
 }
 
 func NewConfig() *Config {
 	return &Config{
 		Addr: getEnv("ADDR", ":8080"),
+		Uri: getEnv("MONGO", ""),
+		DBname: getEnv("DBname", "product"),
+		ComicsCollection: getEnv("COMICS_COLLECTION", "comics"),
 	}
 }
 
