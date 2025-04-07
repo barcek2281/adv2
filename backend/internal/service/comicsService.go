@@ -36,3 +36,15 @@ func (c *ComicsService) CreateComics(comics *models.ProductComics) error {
 func (c *ComicsService) GetById(id string) (*models.ProductComics, error) {
 	return c.store.ComicsRepo().GetById(id)
 }
+
+func (c *ComicsService) Update(comics *models.ProductComics) error {
+	return c.store.ComicsRepo().Update(comics)
+}
+
+func (c *ComicsService) Delete(id string) error {
+	return c.store.ComicsRepo().Delete(id)
+}
+
+func (c *ComicsService) GetAll() ([]models.ProductComics, error) {
+	return c.store.ComicsRepo().GetAll()
+}

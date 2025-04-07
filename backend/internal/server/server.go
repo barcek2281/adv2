@@ -33,8 +33,8 @@ func (s *Server) Configure() {
 	})
 	s.mux.Handle("POST /product/comics", s.handlerComics.Create())
 	s.mux.Handle("GET /product/comics/{id}", s.handlerComics.GetById())
-	// s.mux.Handle("PATCH /product/comics/{id}", nil)
-	// s.mux.Handle("DELETE /product/comics/{id}", nil)
-	// s.mux.Handle("GET /product/comics", nil)
+	s.mux.Handle("PATCH /product/comics/{id}", s.handlerComics.Update())
+	s.mux.Handle("DELETE /product/comics/{id}", s.handlerComics.Delete())
+	s.mux.Handle("GET /product/comics", s.handlerComics.GetAll())
 
 }
