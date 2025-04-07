@@ -5,6 +5,7 @@ import (
 
 	"github.com/barcek2281/adv2/internal/config"
 	"github.com/barcek2281/adv2/internal/store"
+	models "github.com/barcek2281/adv2/model"
 )
 
 type ComicsService struct {
@@ -21,4 +22,13 @@ func NewComicsService(config *config.Config) *ComicsService {
 		config: config,
 		store:  store,
 	}
+}
+
+func (c *ComicsService) CreateComics(comics *models.ProductComics) error {
+
+	if err := c.store.ComicsRepo().Create(comics); err != nil {
+		return err
+	}
+
+	return nil
 }

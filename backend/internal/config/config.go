@@ -7,6 +7,7 @@ type Config struct {
 	ComicsCollection string
 	DBname           string
 	Uri              string
+	JWTSecret string
 }
 
 func NewConfig() *Config {
@@ -15,6 +16,7 @@ func NewConfig() *Config {
 		Uri: getEnv("MONGO", ""),
 		DBname: getEnv("DBname", "product"),
 		ComicsCollection: getEnv("COMICS_COLLECTION", "comics"),
+		JWTSecret: getEnv("JWTSecret", "secret"),
 	}
 }
 
