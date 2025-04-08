@@ -2,7 +2,10 @@ package service
 
 import (
 	"context"
+	"errors"
+	"fmt"
 	"log"
+	"net/http"
 
 	"github.com/barcek2281/adv2/internal/config"
 	model "github.com/barcek2281/adv2/models"
@@ -27,8 +30,13 @@ func NewOrdersService(config *config.Config) *OrdersService {
 }
 
 func (s *OrdersService) CreateOrder(order *model.Order) error {
+
+	req, err := http.Get(fmt.Sprintf("localhost:8080/product/comics/%s", order.ProductID))
+	if err != nil || req.StatusCode == http.StatusBadRequest {
+		return errors.New("not found product")
+	}
 	collection := s.db.Collection(s.config.OrdersCollection)
-	_, err := collection.InsertOne(context.Background(), order)
+	_, err = collection.InsertOne(context.Background(), order)
 	return err
 }
 
@@ -66,7 +74,7 @@ func (s *OrdersService) DeleteOrder(id string) error {
 }
 
 func (s *OrdersService) GetAllOrders() ([]model.Order, error) {
-	
+
 	collection := s.db.Collection(s.config.OrdersCollection)
 	cursor, err := collection.Find(context.Background(), bson.D{})
 	if err != nil {
